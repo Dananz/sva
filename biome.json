@@ -8,7 +8,7 @@
   },
   "javascript": {
     "formatter": {
-      "arrowParentheses": "always"
+      "enabled": false
     }
   },
   "vcs": {
