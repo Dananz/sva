@@ -1,0 +1,60 @@
+{
+  "name": "sva",
+  "version": "0.0.0",
+  "description": "Style Variance Authority",
+  "author": "Tomer Danan",
+  "license": "MIT",
+  "repository": "https://github.com/dananz/sva.git",
+  "homepage": "https://github.com/dananz/sva#readme",
+  "bugs": "https://github.com/dananz/sva/issues",
+  "sideEffects": false,
+  "type": "module",
+  "keywords": [
+    "Style Variance Authority",
+    "style-variance-authority",
+    "sva",
+    "cva",
+    "variants"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest dev",
+    "lint": "eslint . && biome check .",
+    "lint:fix": "automd && eslint . --fix && biome check --write .",
+    "prepack": "pnpm build",
+    "play": "jiti playground",
+    "release": "pnpm test && changelogen --release && npm publish && git push --follow-tags",
+    "test": "pnpm lint && pnpm test:types && vitest run --coverage",
+    "test:types": "tsc --noEmit --skipLibCheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.7.2",
+    "@types/node": "^20.12.7",
+    "@vitest/coverage-v8": "^1.5.3",
+    "automd": "^0.3.7",
+    "changelogen": "^0.5.5",
+    "eslint": "^9.1.1",
+    "eslint-config-unjs": "^0.3.0-rc.7",
+    "jiti": "^1.21.0",
+    "typescript": "^5.4.5",
+    "unbuild": "^2.0.0",
+    "vitest": "^1.5.3"
+  },
+  "dependencies": {
+    "csstype": "^3.1.3"
+  },
+  "packageManager": "pnpm@9.0.6"
+}
