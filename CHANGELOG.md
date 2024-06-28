@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/dananz/sva/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- Add author ([5497a24](https://github.com/dananz/sva/commit/5497a24))
+
+### ❤️ Contributors
+
+- Tomer Danan <tomer@action-item.co.il>
+
 ## v0.0.3
 
 [compare changes](https://github.com/dananz/sva/compare/v0.0.2...v0.0.3)
