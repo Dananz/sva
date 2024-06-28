@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/dananz/sva/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- Improve naming and type inference ([cee280d](https://github.com/dananz/sva/commit/cee280d))
+
+### 🏡 Chore
+
+- Bump packages ([2dfc277](https://github.com/dananz/sva/commit/2dfc277))
+
+### ❤️ Contributors
+
+- Tomer Danan <tomer@action-item.co.il>
+
 ## v0.0.6
 
 [compare changes](https://github.com/dananz/sva/compare/v0.0.5...v0.0.6)
