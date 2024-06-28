@@ -1,8 +1,8 @@
+# Style Variance Authority (SVA)
+
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
-
-# Style Variance Authority (SVA)
 
 A powerful and flexible package for managing style-based variants in your components. Inspired by the Class Variance Authority (CVA) package by Joe Bell, SVA takes a similar approach but applies styles directly instead of using class-based variants.
 
@@ -122,3 +122,11 @@ This package is inspired by the [Class Variance Authority (CVA)](https://github.
 ## License
 
 [MIT](LICENSE)
+
+<!-- Badges -->
+[npm-version-src]: https://img.shields.io/npm/v/style-variance-authority/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/style-variance-authority
+[npm-downloads-src]: https://img.shields.io/npm/dm/style-variance-authority.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/style-variance-authority
+[license-src]: https://img.shields.io/npm/l/style-variance-authority.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://npmjs.com/package/style-variance-authority
