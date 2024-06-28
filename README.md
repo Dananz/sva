@@ -4,7 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-A powerful and flexible package for managing style-based variants in your components. Inspired by the [Class Variance Authority (CVA)](https://github.com/joe-bell/cva) package by Joe Bell, SVA takes a similar approach but applies styles directly instead of using class-based variants.
+A powerful and flexible package for managing style-based variants in your components. Inspired by the [Class Variance Authority (CVA)](https://github.com/joe-bell/cva) package, SVA takes a similar approach but applies styles directly instead of using class-based variants.
 
 ## Table of Contents
 
@@ -46,7 +46,7 @@ const useButtonStyles = sva({
     border: "none",
     borderRadius: "5px",
   },
-  
+
   variants: {
     color: {
       primary: { backgroundColor: "blue", color: "white" },
