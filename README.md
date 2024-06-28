@@ -40,12 +40,13 @@ bun install style-variance-authority
 ```typescript
 import { sva, type SVAConfig, type SVAProps } from "style-variance-authority";
 
-const buttonConfig: SVAConfig = {
+const useButtonStyles = sva({
   base: {
     padding: "10px",
     border: "none",
     borderRadius: "5px",
   },
+  
   variants: {
     color: {
       primary: { backgroundColor: "blue", color: "white" },
@@ -56,10 +57,12 @@ const buttonConfig: SVAConfig = {
       large: { fontSize: "18px" },
     },
   },
+
   defaultVariants: {
     color: "primary",
     size: "small",
   },
+
   compoundVariants: [
     {
       color: "primary",
@@ -67,9 +70,7 @@ const buttonConfig: SVAConfig = {
       styles: { fontWeight: "bold" },
     },
   ],
-};
-
-const useButtonStyles = sva(buttonConfig);
+});
 
 const buttonStyles = useButtonStyles({ color: "secondary", size: "large" });
 // Result: { padding: '10px', border: 'none', borderRadius: '5px', backgroundColor: 'gray', color: 'black', fontSize: '18px' }
