@@ -1,3 +1,7 @@
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
+
 # Style Variance Authority (SVA)
 
 A powerful and flexible package for managing style-based variants in your components. Inspired by the Class Variance Authority (CVA) package by Joe Bell, SVA takes a similar approach but applies styles directly instead of using class-based variants.
