@@ -64,6 +64,18 @@ describe("sva", () => {
     });
   });
 
+  it("should apply styles using the 'styles' prop", () => {
+    const style = useButtonStyles({
+      color: "purple",
+      styles: { margin: "10px" },
+    });
+    expect(style).toEqual({
+      ...buttonConfig.base,
+      ...buttonConfig.variants?.color.purple,
+      margin: "10px",
+    });
+  });
+
   it("should apply specified button variant over default", () => {
     const style = useButtonStyles({ color: "purple" });
     expect(style).toEqual({
