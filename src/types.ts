@@ -41,4 +41,4 @@ export type SVAProps<T> = T extends SVAOutput<infer U>
 
 export type SVAOutput<T extends SVAVariantSchema> = (
   props: InferVariants<SVAConfig<T>> & { styles?: CSSProperties },
-) => CSSProperties;
+) => Record<string, string | number>;
