@@ -1,95 +1,120 @@
-# packageName
+# Style Variance Authority (SVA)
 
-<!-- automd:badges color=yellow -->
+A powerful and flexible package for managing style-based variants in your components. Inspired by the Class Variance Authority (CVA) package by Joe Bell, SVA takes a similar approach but applies styles directly instead of using class-based variants.
 
-[![npm version](https://img.shields.io/npm/v/packageName?color=yellow)](https://npmjs.com/package/packageName)
-[![npm downloads](https://img.shields.io/npm/dm/packageName?color=yellow)](https://npmjs.com/package/packageName)
+## Table of Contents
 
-<!-- /automd -->
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+  - [sva](#sva)
+  - [SVAConfig](#svaconfig)
+  - [SVAVariantSchema](#svavariantschema)
+  - [SVAProps](#svaprops)
+  - [SVAOutput](#svaoutput)
+- [Credits](#credits)
+- [License](#license)
 
-This is my package description.
+## Installation
+
+```sh
+# npm
+npm install style-variance-authority
+
+# yarn
+yarn add style-variance-authority
+
+# pnpm
+pnpm install style-variance-authority
+
+# bun
+bun install style-variance-authority
+```
 
 ## Usage
 
-Install package:
+```typescript
+import { sva, type SVAConfig, type SVAProps } from "style-variance-authority";
 
-<!-- automd:pm-install -->
+const buttonConfig: SVAConfig = {
+  base: {
+    padding: "10px",
+    border: "none",
+    borderRadius: "5px",
+  },
+  variants: {
+    color: {
+      primary: { backgroundColor: "blue", color: "white" },
+      secondary: { backgroundColor: "gray", color: "black" },
+    },
+    size: {
+      small: { fontSize: "12px" },
+      large: { fontSize: "18px" },
+    },
+  },
+  defaultVariants: {
+    color: "primary",
+    size: "small",
+  },
+  compoundVariants: [
+    {
+      color: "primary",
+      size: "large",
+      styles: { fontWeight: "bold" },
+    },
+  ],
+};
 
-```sh
-# ✨ Auto-detect
-npx nypm install packageName
+const useButtonStyles = sva(buttonConfig);
 
-# npm
-npm install packageName
+const buttonStyles = useButtonStyles({ color: "secondary", size: "large" });
+// Result: { padding: '10px', border: 'none', borderRadius: '5px', backgroundColor: 'gray', color: 'black', fontSize: '18px' }
 
-# yarn
-yarn add packageName
-
-# pnpm
-pnpm install packageName
-
-# bun
-bun install packageName
+interface ButtonProps extends SVAProps<typeof buttonConfig> {}
+// SVAProps is an helper method to infer the props for a given SVA configuration
 ```
 
-<!-- /automd -->
+## API
 
-Import:
+### sva
 
-<!-- automd:jsimport cjs cdn name="pkg" -->
+The main function to generate resolved styles based on variant props.
 
-**ESM** (Node.js, Bun)
+#### Parameters
 
-```js
-import {} from "pkg";
-```
+- `config` (SVAConfig): The configuration object for the variants schema.
 
-**CommonJS** (Legacy Node.js)
+#### Returns
 
-```js
-const {} = require("pkg");
-```
+A function that accepts variant props and returns resolved styles.
 
-**CDN** (Deno, Bun and Browsers)
+### SVAConfig
 
-```js
-import {} from "https://esm.sh/pkg";
-```
+Represents the configuration for variants in a component.
 
-<!-- /automd -->
+#### Properties
 
-## Development
+- `base` (CSSProperties): Base CSS properties that apply to all variants.
+- `variants` (SVAVariantSchema): Variants schema that defines the available variants and their styles.
+- `defaultVariants` (InferVariants<SVAConfig<T>> | undefined): Default values for each variant.
+- `compoundVariants` (Array<InferVariants<SVAConfig<T>> & { styles?: CSSProperties }>): Compound variants that define additional styles based on combinations of variant values.
 
-<details>
+### SVAVariantSchema
 
-<summary>local development</summary>
+A record of variant names to their possible values and associated styles.
 
-- Clone this repository
-- Install latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+### SVAProps
 
-</details>
+Infers the variant props for a given SVA configuration.
+
+### SVAOutput
+
+A function that accepts variant props and returns resolved styles.
+
+## Credits
+
+This package is inspired by the [Class Variance Authority (CVA)](https://github.com/joe-bell/cva) package by Joe Bell. Special thanks to Joe for his incredible work.
 
 ## License
 
-<!-- automd:contributors license=MIT -->
-
-Published under the [MIT](https://github.com/unjs/packageName/blob/main/LICENSE) license.
-Made by [community](https://github.com/unjs/packageName/graphs/contributors) 💛
-<br><br>
-<a href="https://github.com/unjs/packageName/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=unjs/packageName" />
-</a>
-
-<!-- /automd -->
-
-<!-- automd:with-automd -->
-
----
-
-_🤖 auto updated with [automd](https://automd.unjs.io)_
-
-<!-- /automd -->
-# sva
+[MIT](LICENSE)
