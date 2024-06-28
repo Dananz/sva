@@ -1,6 +1,6 @@
 import type { Properties as CSSProperties } from "csstype";
 
-import type { SVAConfig, SVAOutput, SVAVariantSchema } from "./types";
+import type { Config, Props, VariantSchema } from "./types";
 import { isKey, mapFalsyToUndefined } from "./utils";
 
 /**
@@ -9,9 +9,7 @@ import { isKey, mapFalsyToUndefined } from "./utils";
  * @param config - The configuration object for the variants schema.
  * @returns A function that accepts variant props and returns resolved styles.
  */
-export function sva<T extends SVAVariantSchema>(
-  config: SVAConfig<T>,
-): SVAOutput<T> {
+export function sva<T extends VariantSchema>(config: Config<T>) {
   const {
     base = {},
     variants = {},
@@ -19,8 +17,9 @@ export function sva<T extends SVAVariantSchema>(
     defaultVariants = {},
   } = config;
 
-  return (variantProps) => {
-    const { styles, ...props } = variantProps;
+  return (variantProps?: Props<T>) => {
+    const { styles = {}, ...props } = variantProps || ({} as Props<T>);
+
     const resolvedStyles: CSSProperties = { ...base, ...styles };
 
     // Apply default variants
@@ -48,7 +47,7 @@ export function sva<T extends SVAVariantSchema>(
     for (const compound of compoundVariants) {
       const matches = Object.keys(compound).every((key) => {
         if (key === "styles") return true; // Skip the styles key
-        return key in props && props[key] === compound[key];
+        return isKey(props, key) && props[key] === compound[key];
       });
 
       if (matches) {
@@ -56,8 +55,10 @@ export function sva<T extends SVAVariantSchema>(
       }
     }
 
-    return JSON.parse(JSON.stringify(mapFalsyToUndefined(resolvedStyles)));
+    return JSON.parse(
+      JSON.stringify(mapFalsyToUndefined(resolvedStyles)),
+    ) as Record<string, string | number>;
   };
 }
 
-export * from "./types";
+export type { StyleVariantProps } from "./types";

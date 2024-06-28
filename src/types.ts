@@ -1,13 +1,18 @@
 import type { Properties as CSSProperties } from "csstype";
 
-export type SVAVariantSchema = Record<string, Record<string, CSSProperties>>;
+type OmitUndefined<T> = T extends undefined ? never : T;
 
+export type VariantSchema = Record<string, Record<string, CSSProperties>>;
+
+type InferVariants<T extends VariantSchema> = {
+  [Variant in keyof T]?: Extract<keyof T[Variant], string> | null | undefined;
+};
 /**
  * Represents the configuration for variants in a component.
  *
  * @template T - The type of the variant schema.
  */
-export type SVAConfig<T extends SVAVariantSchema = SVAVariantSchema> = {
+export type Config<T extends VariantSchema = VariantSchema> = {
   /**
    * Base CSS properties that apply to all variants.
    */
@@ -16,29 +21,24 @@ export type SVAConfig<T extends SVAVariantSchema = SVAVariantSchema> = {
   /**
    * Variants schema that defines the available variants and their styles.
    */
-  variants: T;
+  variants?: T;
 
   /**
    * Default values for each variant.
    */
-  defaultVariants?: InferVariants<SVAConfig<T>> | undefined;
+  defaultVariants?: InferVariants<T>;
 
   /**
    * Compound variants that define additional styles based on combinations of variant values.
    */
-  compoundVariants?: Array<
-    InferVariants<SVAConfig<T>> & { styles?: CSSProperties }
-  >;
+  compoundVariants?: Array<InferVariants<T> & { styles?: CSSProperties }>;
 };
 
-type InferVariants<T extends SVAConfig<SVAVariantSchema>> = {
-  [K in keyof T["variants"]]?: Extract<keyof T["variants"][K], string> | null;
+export type Props<T extends VariantSchema> = InferVariants<T> & {
+  styles?: CSSProperties;
 };
 
-export type SVAProps<T> = T extends SVAOutput<infer U>
-  ? InferVariants<SVAConfig<U>>
-  : never;
-
-export type SVAOutput<T extends SVAVariantSchema> = (
-  props: InferVariants<SVAConfig<T>> & { styles?: CSSProperties },
-) => Record<string, string | number>;
+export type StyleVariantProps<StylesFn extends (...args: any) => any> = Omit<
+  OmitUndefined<Parameters<StylesFn>[0]>,
+  "styles"
+>;

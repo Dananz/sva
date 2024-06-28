@@ -1,4 +1,4 @@
-import { sva } from "../src";
+import { type VariantProps, sva } from "../src";
 
 const useUndefinedStyles = sva({
   base: {
@@ -13,6 +13,19 @@ const useUndefinedStyles = sva({
       large: { fontSize: undefined }, // Should not appear in the output
     },
   },
+  defaultVariants: {
+    size: "large",
+  },
 });
 
 console.log(useUndefinedStyles({ size: "small" }));
+
+type TestProps = {
+  color: VariantProps<typeof useUndefinedStyles>["size"];
+};
+
+const testProps: TestProps = {
+  color: "large",
+};
+
+console.log("testProps", testProps);

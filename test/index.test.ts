@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { type SVAConfig, sva } from "../src";
+import { sva } from "../src";
 
 // Shared configurations
-const buttonConfig: SVAConfig = {
+const buttonConfig = {
   base: {
     padding: "8px 16px",
     borderRadius: "4px",
@@ -16,10 +16,10 @@ const buttonConfig: SVAConfig = {
   },
   defaultVariants: {
     color: "blue",
-  },
-} as const;
+  } as const,
+};
 
-const cardConfig: SVAConfig = {
+const cardConfig = {
   base: {
     padding: "10px 15px",
     borderRadius: "8px",
@@ -35,8 +35,8 @@ const cardConfig: SVAConfig = {
   },
   defaultVariants: {
     boxShadow: "light",
-  },
-} as const;
+  } as const,
+};
 
 const useButtonStyles = sva(buttonConfig);
 const useCardStyles = sva(cardConfig);
@@ -73,6 +73,7 @@ describe("sva", () => {
   });
 
   it("should handle undefined variantProps correctly", () => {
+    // @ts-ignore
     const style = useButtonStyles({ color: "red" }); // 'red' is not a defined variant
     expect(style).toEqual({
       ...buttonConfig.base,
@@ -90,6 +91,7 @@ describe("sva", () => {
 
   // Edge cases
   it("should ignore non-existent variant properties", () => {
+    // @ts-ignore
     const style = useButtonStyles({ color: "unknown" }); // Non-existent variant
     expect(style).toEqual({
       ...buttonConfig.base,
@@ -107,8 +109,9 @@ describe("sva", () => {
   });
 
   it("should manage incomplete configuration without variants", () => {
-    const incompleteConfig = { base: { padding: "20px" } } as SVAConfig; // Completely missing variants and defaultVariants
+    const incompleteConfig = { base: { padding: "20px" } }; // Completely missing variants and defaultVariants
     const useIncompleteStyles = sva(incompleteConfig);
+    // @ts-ignore
     const style = useIncompleteStyles({ color: "blue" }); // Attempt to use a variant
     expect(style).toEqual({
       padding: "20px", // Only base styles applied
