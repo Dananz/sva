@@ -4,7 +4,10 @@
   "description": "Style Variance Authority",
   "author": "Tomer Danan",
   "license": "MIT",
-  "repository": "https://github.com/dananz/sva.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dananz/sva.git"
+  },
   "homepage": "https://github.com/dananz/sva#readme",
   "bugs": "https://github.com/dananz/sva/issues",
   "sideEffects": false,
