@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.9
+
+[compare changes](https://github.com/dananz/sva/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- Allow non-existing css properties, eg: css variables ([7325596](https://github.com/dananz/sva/commit/7325596))
+
+### 🏡 Chore
+
+- **release:** V0.0.8 ([34170b0](https://github.com/dananz/sva/commit/34170b0))
+
+### ❤️ Contributors
+
+- Tomer Danan <tomer@action-item.co.il>
+
 ## v0.0.8
 
 [compare changes](https://github.com/dananz/sva/compare/v0.0.7...v0.0.8)
