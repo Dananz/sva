@@ -1,6 +1,4 @@
-import type { Properties as CSSProperties } from "csstype";
-
-import type { Config, Props, VariantSchema } from "./types";
+import type { CSSProperties, Config, Props, VariantSchema } from "./types";
 import { isKey, mapFalsyToUndefined } from "./utils";
 
 /**

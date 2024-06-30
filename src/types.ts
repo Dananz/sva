@@ -1,4 +1,6 @@
-import type { Properties as CSSProperties } from "csstype";
+import type { Properties } from "csstype";
+
+export type CSSProperties = Properties & Record<string, any>;
 
 type OmitUndefined<T> = T extends undefined ? never : T;
 

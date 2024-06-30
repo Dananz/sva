@@ -1,4 +1,4 @@
-import { type VariantProps, sva } from "../src";
+import { type StyleVariantProps, sva } from "../src";
 
 const useUndefinedStyles = sva({
   base: {
@@ -21,7 +21,7 @@ const useUndefinedStyles = sva({
 console.log(useUndefinedStyles({ size: "small" }));
 
 type TestProps = {
-  color: VariantProps<typeof useUndefinedStyles>["size"];
+  color: StyleVariantProps<typeof useUndefinedStyles>["size"];
 };
 
 const testProps: TestProps = {
