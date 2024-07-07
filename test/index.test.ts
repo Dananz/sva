@@ -138,4 +138,24 @@ describe("sva", () => {
       padding: "10px",
     });
   });
+
+  it("should apply * compound variant styles", () => {
+    const useWildcardCompoundVariants = sva({
+      variants: {
+        size: {
+          small: { fontSize: "12px" },
+          large: { fontSize: "16px" },
+        },
+      },
+      compoundVariants: [{ size: "*", styles: { padding: "10px" } }],
+    });
+
+    const style = useWildcardCompoundVariants({ size: "large" });
+
+    // Only valid styles should appear without undefined values
+    expect(style).toEqual({
+      padding: "10px",
+      fontSize: "16px",
+    });
+  });
 });

@@ -56,6 +56,11 @@ const useButtonStyles = sva({
       size: "large",
       styles: { fontWeight: "bold" },
     },
+    {
+      color: "*", // Will match any color variant
+      size: "small",
+      styles: { fontWeight: "light" },
+    },
   ],
 });
 

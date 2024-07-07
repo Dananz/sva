@@ -16,9 +16,17 @@ const useUndefinedStyles = sva({
   defaultVariants: {
     size: "large",
   },
+  compoundVariants: [
+    {
+      size: "*",
+      styles: {
+        backgroundColor: "red",
+      },
+    },
+  ],
 });
 
-console.log(useUndefinedStyles({ size: "small" }));
+console.log("useUndefinedStyles", useUndefinedStyles({ size: "small" }));
 
 type TestProps = {
   color: StyleVariantProps<typeof useUndefinedStyles>["size"];

@@ -44,7 +44,7 @@ export function sva<T extends VariantSchema>(config: Config<T>) {
     // Apply compound variants
     for (const compound of compoundVariants) {
       const matches = Object.keys(compound).every((key) => {
-        if (key === "styles") return true; // Skip the styles key
+        if (key === "styles" || compound[key] === "*") return true; // Skip the styles key
         return isKey(props, key) && props[key] === compound[key];
       });
 

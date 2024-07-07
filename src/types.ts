@@ -6,8 +6,12 @@ type OmitUndefined<T> = T extends undefined ? never : T;
 
 export type VariantSchema = Record<string, Record<string, CSSProperties>>;
 
-type InferVariants<T extends VariantSchema> = {
-  [Variant in keyof T]?: Extract<keyof T[Variant], string> | null | undefined;
+type InferVariants<T extends VariantSchema, AdditionalType = never> = {
+  [Variant in keyof T]?:
+    | Extract<keyof T[Variant], string>
+    | null
+    | undefined
+    | AdditionalType;
 };
 /**
  * Represents the configuration for variants in a component.
@@ -33,7 +37,7 @@ export type Config<T extends VariantSchema = VariantSchema> = {
   /**
    * Compound variants that define additional styles based on combinations of variant values.
    */
-  compoundVariants?: Array<InferVariants<T> & { styles?: CSSProperties }>;
+  compoundVariants?: Array<InferVariants<T, "*"> & { styles?: CSSProperties }>;
 };
 
 export type Props<T extends VariantSchema> = InferVariants<T> & {
