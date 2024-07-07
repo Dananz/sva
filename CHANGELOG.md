@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://github.com/dananz/sva/compare/v0.0.9...v0.0.10)
+
+### 🚀 Enhancements
+
+- CompoundVariants now support * wildcard to match multiple variants ([477346b](https://github.com/dananz/sva/commit/477346b))
+
+### ❤️ Contributors
+
+- Tomer Danan <tomer@action-item.co.il>
+
 ## v0.0.9
 
 [compare changes](https://github.com/dananz/sva/compare/v0.0.8...v0.0.9)
